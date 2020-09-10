@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Search Word</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+
+}
+
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+    background-color: antiquewhite;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+
+</style>
+<body class="w3-theme-light-blue w3-margin">
+
+<!-- Navbar -->
+<div class="w3-top w3-margin ">
+  <div class="w3-bar w3-theme-light-blue w3-top w3-right  w3-blue w3-large" style="align:right">
+<!--    <a class="w3-bar-item w3-button w3-right w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>-->
+
+    <a href="#" class="w3-bar-item w3-right w3-hover-white ">قاموس</a>
+      </div>
+</div>
+
+<!-- Sidebar -->
+<nav style="align:right" class="w3-sidebar w3-theme-red w3-margin-top" class="w3-theme-red" id="mySidebar">
+
+ <div class=" w3-container-green   " style="height:200px;, margin-top: 16px;" >
+      <table class="w3-stripped" style="border: 1px solid black;" >
+          <tr style="text-align: center;">Word and its occurance</tr>
+          <tr style="border: 1px solid black;">
+              <th>Word</th>
+              <th>Frequency</th>
+          </tr>
+          <tr>
+     <td> <strong>{{username1}}</strong></td>
+     <td> <strong>{{count}}</strong></td>
+       </tr>
+          <tr></tr>
+          <tr></tr>
+      </table>
+	  </p>
+
+    </div>
+
+
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main w3-right-align w3-theme-light-blue" style="margin-left:250px; " >
+
+  <div class="w3-row w3-padding-64" style="height:500px;">
+    <div class=" w3-container">
+        <h2>كلمة البحث</h2>
+            <form class="example" name = "form" action = "/blog/login/"
+         method = "POST" >{% csrf_token %}
+             <p style="text-align: right;">    <button type="submit"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="بحث.."   name="username">
+             </p>
+      </form>
+         <table  style="background-color: azure; border: 1px; width:400px; text-align: right; " >
+    {% for key, values in username %}
+
+     <table style="border: 1px;background-color: azure; ">
+
+         <tr ><td style="text-align: right;">{{ values }}</td></tr>
+         <tr><td></td></tr>
+
+     </table>
+    {% endfor %}
+        </table>
+
+
+    </div>
+
+<!--            <table class="w3-table" >-->
+<!--    {% for key, values in username %}-->
+<!--&lt;!&ndash;     <tr class="w3-hover-green" >{{key}}</tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <tr >{{values}}</tr>&ndash;&gt;-->
+<!--        {% for v in values %}-->
+<!--        <td>{{v}}</td>-->
+
+<!--        {% endfor %}-->
+<!--    {% endfor %}-->
+<!--       </table>-->
+    <div class=" w3-card w3-table " style="background-color: azure; " >
+
+    </div>
+  </div>
+
+
+
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+</body>
+</html>
+

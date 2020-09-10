@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+        <table  style="background-color: azure; border: 1px; width:400px; text-align: right; " >
+    {% for key, values in username %}
+
+     <table style="border: 1px;background-color: azure; ">
+
+         <tr ><td style="text-align: right;">{{ values }}</td></tr>
+         <tr><td></td></tr>
+
+     </table>
+    {% endfor %}
+        </table>
+</body>
+</html>
